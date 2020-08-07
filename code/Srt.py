@@ -205,7 +205,7 @@ class SrtCutter:
         try:
             subprocess.check_output(cmd, shell=True)
         except Exception as e:
-            print('Error occurs, removing corrupted file: ' + mp4_file)
+            print('Oops, something is wrong! Removing the likely corrupted file: ' + mp4_file)
             os.remove(Path(mp4_file))
             raise e
 
