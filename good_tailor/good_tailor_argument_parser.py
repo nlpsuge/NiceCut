@@ -6,7 +6,7 @@ class GoodTailorArgumentParser:
     def parse_args(self):
 
         parser = argparse.ArgumentParser()
-        parser.add_argument('-w', '--workspace')
+        parser.add_argument('-w', '--workspace', help="Setup the workspace path that saved the results.")
         parser.add_argument('-s', '--subtitle-file')
         parser.add_argument('-m', '--media-file')
         parser.add_argument('-b', '--milliseconds-before-cutting')
