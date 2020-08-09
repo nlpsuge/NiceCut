@@ -142,6 +142,10 @@ class Srt:
         return new_infos
 
     def extract_clips(self, infos, milliseconds_before_cutting, milliseconds_after_cutting):
+        # if self.debug is False:
+        #     from tqdm import tqdm
+        #     infos = tqdm(infos)
+
         for info in infos:
             self.execute_ffmpeg(info, milliseconds_before_cutting, milliseconds_after_cutting)
             self.copy_sentences(info)
@@ -201,8 +205,12 @@ class Srt:
               "' -loglevel error " + \
               " -acodec copy '" + \
               mp4_file + "'" + \
+              " -y " if self.force_update else "" + \
               " > /dev/null"
-        print('Executing: ' + cmd)
+
+        if self.debug:
+            print('Executing: ' + cmd)
+
         try:
             subprocess.check_output(cmd, shell=True)
         except Exception as e:
