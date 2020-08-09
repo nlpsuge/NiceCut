@@ -1,16 +1,11 @@
 import os
-from os.path import expanduser
 from pathlib import Path
 
 from good_tailor.good_tailor_argument_parser import GoodTailorArgumentParser
 from good_tailor.formats.srt import Srt
 
-default_workspace_path = str(Path(expanduser('~')))
 workspace_path_clips = str(Path('%s', 'GoodTailor', 'clips'))
 workspace_path_texts = str(Path('%s', 'GoodTailor', 'texts'))
-
-default_milliseconds_before = 0
-default_milliseconds_after = 1000
 
 
 def main():
@@ -29,37 +24,16 @@ def main():
     if args.debug:
         srt.print_infos(all_new_infos)
 
-    milliseconds_before_cutting, milliseconds_after_cutting = get_delay_while_cutting(args)
-
+    milliseconds_before_cutting = args.milliseconds_before_cutting
+    milliseconds_after_cutting = args.milliseconds_after_cutting
     srt.extract_clips(all_new_infos, milliseconds_before_cutting, milliseconds_after_cutting)
-
-
-def get_delay_while_cutting(args):
-    if args.milliseconds_before_cutting is not None:
-        milliseconds_before_cutting = args.milliseconds_before_cutting
-    else:
-        milliseconds_before_cutting = default_milliseconds_before
-    
-    if args.milliseconds_after_cutting is not None:
-        milliseconds_after_cutting = args.milliseconds_after_cutting
-    else:
-        milliseconds_after_cutting = default_milliseconds_after
-    
-    return milliseconds_before_cutting, milliseconds_after_cutting
-
-
-def get_workspace_path(args):
-    if args.workspace is not None:
-        return args.workspace
-    else:
-        return default_workspace_path
 
 
 def prepare_space(self, args):
     self.media_file_path = args.media_file
     self.subtitle_file_path = args.subtitle_file
 
-    workspace_path = get_workspace_path(args)
+    workspace_path = args.workspace
     wpc = Path(workspace_path_clips % workspace_path)
     wpc.parent.mkdir(parents=True, exist_ok=True)
     wpt = Path(workspace_path_texts % workspace_path)
