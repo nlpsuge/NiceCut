@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 from good_tailor.good_tailor_argument_parser import GoodTailorArgumentParser
-from good_tailor.formats.srt import Srt
+from good_tailor.strategies.subtitles.formats.srt import Srt
 
 workspace_path_clips = str(Path('%s', 'GoodTailor', 'clips'))
 workspace_path_texts = str(Path('%s', 'GoodTailor', 'texts'))
