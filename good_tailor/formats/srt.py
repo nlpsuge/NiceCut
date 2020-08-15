@@ -233,6 +233,8 @@ class Srt:
     def skip_clip(self, info):
         if str.startswith(info.sentences, 'Advertise your product or brand here'):
             return True
+        if "www.OpenSubtitles.org" in info.sentences:
+            return True
         return False
 
 
