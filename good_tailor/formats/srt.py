@@ -205,7 +205,7 @@ class Srt:
               "' -loglevel error " + \
               " -acodec copy '" + \
               mp4_file + "'" + \
-              " -y " if self.force_update else "" + \
+              (" -y " if self.force_update else "") + \
               " > /dev/null"
 
         if self.debug:
