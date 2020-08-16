@@ -43,7 +43,7 @@ class Srt:
             if index >= total_of_lines:
                 break
 
-            if '-->' in lines[index]:
+            if ' --> ' in lines[index]:
                 info = Info(lines[index - 1], lines[index])
                 info.set_time(time_duration=lines[index])
 
@@ -59,7 +59,7 @@ class Srt:
                     if stop:
                         break
 
-                    if '-->' not in lines[index_sentence]:
+                    if ' --> ' not in lines[index_sentence]:
                         step = step + 1
                     else:
                         stop = True
@@ -231,9 +231,11 @@ class Srt:
             print()
 
     def skip_clip(self, info):
-        if str.startswith(info.sentences, 'Advertise your product or brand here'):
-            return True
+        # Skip advertisement
         if "www.OpenSubtitles.org" in info.sentences:
+            return True
+        # Skip unimportant clips, such as [LAUGH], [SIGHS] etc
+        if str.startswith(info.sentences, '[') and str.endswith(info.sentences, ']'):
             return True
         return False
 
