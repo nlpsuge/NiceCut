@@ -29,27 +29,27 @@ def main():
     srt.extract_clips(all_new_infos, milliseconds_before_cutting, milliseconds_after_cutting)
 
 
-def prepare_space(self, args):
-    self.media_file_path = args.media_file
-    self.subtitle_file_path = args.subtitle_file
+def prepare_space(srt, args):
+    srt.media_file_path = args.media_file
+    srt.subtitle_file_path = args.subtitle_file
 
-    workspace_path = args.workspace
-    wpc = Path(workspace_path_clips % workspace_path)
+    save_to = args.save_to
+    wpc = Path(workspace_path_clips % save_to)
     wpc.parent.mkdir(parents=True, exist_ok=True)
-    wpt = Path(workspace_path_texts % workspace_path)
+    wpt = Path(workspace_path_texts % save_to)
     wpt.parent.mkdir(parents=True, exist_ok=True)
 
-    mfp = Path(self.media_file_path)
+    mfp = Path(srt.media_file_path)
     media_file_name_without_extension, file_extension = os.path.splitext(mfp.name)
-    self.media_file_name_without_extension = media_file_name_without_extension
+    srt.media_file_name_without_extension = media_file_name_without_extension
 
-    wpcm = Path(workspace_path_clips % workspace_path, media_file_name_without_extension)
-    self.this_media_file_clips_path = wpcm
+    wpcm = Path(workspace_path_clips % save_to, media_file_name_without_extension)
+    srt.this_media_file_clips_path = wpcm
 
-    wptm = Path(workspace_path_texts % workspace_path, media_file_name_without_extension)
-    self.this_media_file_texts_path = wptm
+    wptm = Path(workspace_path_texts % save_to, media_file_name_without_extension)
+    srt.this_media_file_texts_path = wptm
 
-    self.target_media_filename = str(Path(self.this_media_file_clips_path, self.media_file_name_without_extension
+    srt.target_media_filename = str(Path(srt.this_media_file_clips_path, srt.media_file_name_without_extension
                                           + '.%s.%s'))
-    self.target_text_filename = str(Path(self.this_media_file_texts_path, self.media_file_name_without_extension
+    srt.target_text_filename = str(Path(srt.this_media_file_texts_path, srt.media_file_name_without_extension
                                           + '.%s.%s'))
