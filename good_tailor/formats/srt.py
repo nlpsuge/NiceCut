@@ -232,7 +232,7 @@ class Srt:
 
     def skip_clip(self, info):
         # Skip advertisement
-        if "www.OpenSubtitles.org" in info.sentences:
+        if "OpenSubtitles" in info.sentences:
             return True
         # Skip unimportant clips, such as [LAUGH], [SIGHS] etc
         if str.startswith(info.sentences, '[') and str.endswith(info.sentences, ']'):
