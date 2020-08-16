@@ -1,8 +1,11 @@
 class Info:
 
+    # Value such as '00:16:18,520'
     end_time: str
+    # Value such as '00:16:20,850'
     start_time: str
     sentences: str
+    # Value such as '00:16:18,520 --> 00:16:20,850'
     time_duration: str
     number: str
     srt_number: str

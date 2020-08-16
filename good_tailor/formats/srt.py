@@ -147,13 +147,13 @@ class Srt:
         #     infos = tqdm(infos)
 
         for info in infos:
-            self.execute_ffmpeg(info, milliseconds_before_cutting, milliseconds_after_cutting)
-            self.copy_sentences(info)
+            self.extract_media_clips(info, milliseconds_before_cutting, milliseconds_after_cutting)
+            self.extract_subtitle_sentences(info)
 
-    def copy_sentences(self, info):
+    def extract_subtitle_sentences(self, info):
         number = info.number
         srt_number = info.srt_number
-        text_file = (self.target_text_filename % (number, srt_number)) + ".text"
+        text_file = (self.target_text_filename % (number, srt_number)) + ".txt"
 
         text_file_path = Path(text_file)
         if not self.force_update and text_file_path.exists():
@@ -164,7 +164,7 @@ class Srt:
         with open(Path(text_file), 'w') as file:
             file.write(info.sentences)
 
-    def execute_ffmpeg(self, info, milliseconds_before, milliseconds_after):
+    def extract_media_clips(self, info, milliseconds_before, milliseconds_after):
         number = info.number
         srt_number = info.srt_number
         mp4_file = (self.target_media_filename % (number, srt_number)) + ".mp4"
@@ -238,6 +238,19 @@ class Srt:
         if str.startswith(info.sentences, '[') and str.endswith(info.sentences, ']'):
             return True
         return False
+
+    def generate_new_subtitle(self, infos):
+        filename, file_extension = os.path.splitext(self.subtitle_file_path)
+        with open(filename + '.generated_by_gt' + file_extension, 'w') as file:
+            for info in infos:
+                file.write(str(info.number))
+                file.write('\n')
+                file.write(info.start_time + " --> " + info.end_time)
+                file.write('\n')
+                file.write(info.sentences)
+                file.write('\n\n')
+
+
 
 
 
