@@ -1,5 +1,10 @@
+import datetime
+
+
 class Info:
 
+    end_datetime: datetime
+    start_datetime: datetime
     # Value such as '00:16:18,520'
     end_time: str
     # Value such as '00:16:20,850'
@@ -11,6 +16,8 @@ class Info:
     srt_number: str
     # time_durations: list
     next_info: None
+
+    video_speech_results: None
 
     def __init__(self, next_info):
         self.next_info = next_info
@@ -25,7 +32,9 @@ class Info:
 
     def set_time(self, time_duration):
         self.start_time = str.split(str.strip(time_duration), ' --> ')[0]
+        self.start_datetime = datetime.datetime.strptime(self.start_time.replace(',', '.'), '%H:%M:%S.%f')
         self.end_time = str.split(str.strip(time_duration), ' --> ')[1]
+        self.end_datetime = datetime.datetime.strptime(self.end_time.replace(',', '.'), '%H:%M:%S.%f')
 
     def append_sentence(self, sentences):
         if str.strip(sentences) != '' and self.sentences != '':

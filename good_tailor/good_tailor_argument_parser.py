@@ -16,8 +16,16 @@ class NoSplitsChoices(Enum):
     def __str__(self):
         return self.value
 
-class GoodTailorArgumentParser:
 
+class VadChoices(Enum):
+    NO = 'no'
+    VAD_ONLY = 'vad_only'
+
+    def __str__(self):
+        return self.value
+
+
+class GoodTailorArgumentParser:
     def parse_args(self):
 
         parser = argparse.ArgumentParser()
@@ -38,6 +46,8 @@ class GoodTailorArgumentParser:
         # TODO
         parser.add_argument('-f', '--force-update', action='store_true')
         parser.add_argument('-d', '--debug', action='store_true')
+
+        parser.add_argument('--use-vad', type=VadChoices, choices=list(VadChoices), default=VadChoices.NO)
         args = parser.parse_args()
 
         return args

@@ -3,8 +3,9 @@ from pathlib import Path
 
 from alive_progress import alive_bar
 
-from good_tailor.good_tailor_argument_parser import GoodTailorArgumentParser, NoSplitsChoices
+from good_tailor.good_tailor_argument_parser import GoodTailorArgumentParser, NoSplitsChoices, VadChoices
 from good_tailor.formats.srt import Srt
+from good_tailor.strategies.webrtc_strategy import Webrtc
 
 workspace_path_clips = str(Path('%s', 'GoodTailor', 'clips'))
 workspace_path_texts = str(Path('%s', 'GoodTailor', 'texts'))
@@ -22,6 +23,10 @@ def main():
 
     prepare_space(srt, args)
     all_information = srt.process_timeline_clip()
+    
+    if args.use_vad == VadChoices.VAD_ONLY:
+        Webrtc().process(args.media_file, all_information)
+    
     all_new_infos = srt.process_all_info(all_information)
     if args.debug:
         srt.print_infos(all_new_infos)
