@@ -1,0 +1,6 @@
+alive_progress>=1.6.1
+tqdm>=4.50.2
+numpy>=1.19.2
+ffmpeg>=1.4
+auditok>=0.1.8
+webrtcvad>=2.0.10
