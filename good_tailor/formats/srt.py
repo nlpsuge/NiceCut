@@ -196,15 +196,15 @@ class Srt:
         start_time = start_datetime.strftime('%H:%M:%S.%f')
         end_time = end_datetime.strftime('%H:%M:%S.%f')
 
-        cmd = "ffmpeg -i '" + \
+        cmd = "ffmpeg -i \"" + \
               self.media_file_path + \
-              "' -ss '" + \
+              "\" -ss '" + \
               start_time + \
               "' -to '" + \
               end_time + \
               "' -loglevel error " + \
-              " -acodec copy '" + \
-              mp4_file + "'" + \
+              " -acodec copy \"" + \
+              mp4_file + "\"" + \
               (" -y " if self.force_update else "") + \
               " > /dev/null"
 
@@ -213,11 +213,11 @@ class Srt:
 
         try:
             subprocess.check_output(cmd, shell=True)
-        except Exception as e:
+        except:
             print('Oops, something is wrong! Removing the likely corrupted file: ' + mp4_file)
             if mp4_file_path.exists():
                 os.remove(mp4_file_path)
-            raise e
+            raise
 
     def print_infos(self, infos):
         for ni in infos:

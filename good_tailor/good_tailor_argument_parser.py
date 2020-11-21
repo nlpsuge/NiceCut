@@ -21,12 +21,13 @@ class GoodTailorArgumentParser:
     def parse_args(self):
 
         parser = argparse.ArgumentParser()
+        parser.add_argument('media_file')
+        parser.add_argument('subtitle_file')
+
         # save to
         parser.add_argument('-st', '--save-to',
                             default=default_workspace_path, help="Setup the workspace path that saved the results.")
-        parser.add_argument('-sf', '--subtitle-file', required=True)
-        parser.add_argument('-mf', '--media-file', required=True)
-        parser.add_argument('-gns', '--generate-new-subtitle', required=False,
+        parser.add_argument('-gns', '--generate-new-subtitle',
                             help="Save the new generated subtitle to the folder where the original subtitle file is.",
                             action='store_true')
         parser.add_argument('-ns', '--no-splits',

@@ -32,7 +32,7 @@ def main():
     if args.no_splits != NoSplitsChoices.ALL:
         if args.no_splits != NoSplitsChoices.SUBTITLE:
             with alive_bar(len(all_new_infos),
-                           title='Processing subtitle',
+                           title='Processing subtitle files',
                            enrich_print=False,
                            bar='classic',
                            theme='ascii') as bar:
@@ -42,7 +42,7 @@ def main():
 
         if args.no_splits != NoSplitsChoices.MEDIA:
             with alive_bar(len(all_new_infos),
-                           title='Processing media file',
+                           title='Processing media files',
                            enrich_print=False,
                            bar='classic',
                            theme='ascii') as bar:
