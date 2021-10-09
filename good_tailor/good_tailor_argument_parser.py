@@ -3,6 +3,8 @@ from enum import Enum
 from os.path import expanduser
 from pathlib import Path
 
+from .version import __version__
+
 default_workspace_path = str(Path(expanduser('~')))
 default_milliseconds_before = 0
 default_milliseconds_after = 1000
@@ -39,6 +41,9 @@ class GoodTailorArgumentParser:
         # TODO
         parser.add_argument('-f', '--force-update', action='store_true')
         parser.add_argument('-d', '--debug', action='store_true')
+        parser.add_argument('-v', '--version',
+                            action='version',
+                            version=__version__)
         args = parser.parse_args()
 
         return args
