@@ -74,6 +74,6 @@ def prepare_space(srt, args):
     srt.this_media_file_texts_path = wptm
 
     srt.target_media_filename = str(Path(srt.this_media_file_clips_path, srt.media_file_name_without_extension
-                                          + '.%s.%s'))
+                                         + '.%s.%s'))
     srt.target_text_filename = str(Path(srt.this_media_file_texts_path, srt.media_file_name_without_extension
-                                          + '.%s.%s'))
+                                        + '.%s.%s'))
