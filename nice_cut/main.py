@@ -4,7 +4,7 @@ from pathlib import Path
 from alive_progress import alive_bar
 
 from nice_cut.argument_parser import ArgumentParser, NoSplitsChoices
-from nice_cut.formats.srt import Srt
+from nice_cut.supported_formats.srt import Srt
 
 workspace_path_clips = str(Path('%s', 'NiceCut', 'clips'))
 workspace_path_texts = str(Path('%s', 'NiceCut', 'texts'))
