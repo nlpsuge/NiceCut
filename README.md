@@ -1,7 +1,7 @@
-# TheTailor
+# What does this project do?
 A tool that manages to cut a media file into small sections according to a subtitle.
 
-# Subtitle format
+# Supported subtitle format
 Support the srt format in the present.
 
 # Usage
@@ -9,14 +9,14 @@ Support the srt format in the present.
 ## Common usage
 ```
 cd video-location
-gt file-name.mp4 file-name.srt
+ncut file-name.mp4 file-name.srt
 ```
-Gernerted files should be appeared in `~/GoodTailor/clips` and `~/GoodTailor/texts`, which contains video clips and dialogs respectively.
+Generated files should be appeared in `~/NiceCut/clips` and `~/NiceCut/texts`, which contains video clips and dialogs respectively.
 
 ## Help
 ```
-$ gt -h
-usage: gt [-h] [-st SAVE_TO] [-gns] [-ns {subtitle,media,all}] [-bc MILLISECONDS_BEFORE_CUTTING]
+$ ncut -h
+usage: ncut [-h] [-st SAVE_TO] [-gns] [-ns {subtitle,media,all}] [-bc MILLISECONDS_BEFORE_CUTTING]
           [-ac MILLISECONDS_AFTER_CUTTING] [-f] [-d] [-v]
           media_file subtitle_file
 

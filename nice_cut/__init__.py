@@ -1,5 +1,5 @@
 
-import good_tailor.main
+import nice_cut.main
 
 
 def start():

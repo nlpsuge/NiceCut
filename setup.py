@@ -7,19 +7,19 @@ import pathlib
 
 here = pathlib.Path(__file__).parent.resolve()
 
-# Get the version from good_tailor/version.py without importing the package (inspired by youtube-dl)
-exec(compile(open('good_tailor/version.py').read(),
-             'good_tailor/version.py', 'exec'))
+# Get the version from nice_cut/version.py without importing the package (inspired by youtube-dl)
+exec(compile(open('nice_cut/version.py').read(),
+             'nice_cut/version.py', 'exec'))
 
 long_description = (here / 'README.md').read_text(encoding='utf-8')
 
 setup(
-    name='GoodTailor',
+    name='NiceCut',
     version=__version__,
     description='A tool cutting a media file into small clips according to the subtitle file',
     long_description=long_description,
     long_description_content_type='text/markdown',
-    url='https://github.com/nlpsuge/GoodTailor',
+    url='https://github.com/nlpsuge/NiceCut',
     author='nlpsuge',
 
     classifiers=[
@@ -37,7 +37,7 @@ setup(
         "Topic :: Multimedia :: Video :: Conversion",
     ],
     keywords='python, ffmpeg, media, python3, subtitle, srt-subtitles, cutting, english-learning',
-    packages=find_packages(include=['good_tailor', 'good_tailor.*']),
+    packages=find_packages(include=['nice_cut', 'nice_cut.*']),
     python_requires='>=3',
 
     install_requires=[
@@ -46,13 +46,13 @@ setup(
 
     entry_points={  # Optional
         'console_scripts': [
-            'good-tailor = good_tailor.main:main',
-            'gt = good_tailor.main:main',
+            'nice-cut = nice_cut.main:main',
+            'ncut = nice_cut.main:main',
         ],
     },
 
     project_urls={
-        'Bug Reports': 'https://github.com/nlpsuge/GoodTailor/issues',
-        'Source': 'https://github.com/nlpsuge/GoodTailor',
+        'Bug Reports': 'https://github.com/nlpsuge/NiceCut/issues',
+        'Source': 'https://github.com/nlpsuge/NiceCut',
     },
 )

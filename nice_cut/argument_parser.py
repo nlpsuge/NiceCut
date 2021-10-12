@@ -18,7 +18,8 @@ class NoSplitsChoices(Enum):
     def __str__(self):
         return self.value
 
-class GoodTailorArgumentParser:
+
+class ArgumentParser:
 
     def parse_args(self):
 

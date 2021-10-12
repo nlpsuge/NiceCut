@@ -3,15 +3,15 @@ from pathlib import Path
 
 from alive_progress import alive_bar
 
-from good_tailor.good_tailor_argument_parser import GoodTailorArgumentParser, NoSplitsChoices
-from good_tailor.formats.srt import Srt
+from nice_cut.argument_parser import ArgumentParser, NoSplitsChoices
+from nice_cut.formats.srt import Srt
 
-workspace_path_clips = str(Path('%s', 'GoodTailor', 'clips'))
-workspace_path_texts = str(Path('%s', 'GoodTailor', 'texts'))
+workspace_path_clips = str(Path('%s', 'NiceCut', 'clips'))
+workspace_path_texts = str(Path('%s', 'NiceCut', 'texts'))
 
 
 def main():
-    parser = GoodTailorArgumentParser()
+    parser = ArgumentParser()
     args = parser.parse_args()
     if args.debug:
         print(args)

@@ -5,7 +5,7 @@ import subprocess
 from pathlib import Path
 from typing import Any, Union
 
-from good_tailor.info import Info
+from nice_cut.info import Info
 
 
 class Srt:
@@ -241,7 +241,7 @@ class Srt:
 
     def generate_new_subtitle(self, infos):
         filename, file_extension = os.path.splitext(self.subtitle_file_path)
-        with open(filename + '.generated_by_gt' + file_extension, 'w') as file:
+        with open(filename + '.generated_by_ncut' + file_extension, 'w') as file:
             for info in infos:
                 file.write(str(info.number))
                 file.write('\n')

@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+import importlib.util
+import sys
+import os
+from pathlib import Path
+
+current_file_path = os.path.dirname(os.path.realpath(__file__))
+# Load nice_cut module
+# Python 3.5+
+file_path = Path(current_file_path, "..", "nice_cut", "__init__.py")
+module_name = "nice_cut"
+spec = importlib.util.spec_from_file_location(module_name, file_path)
+nice_cut = importlib.util.module_from_spec(spec)
+sys.modules[module_name] = nice_cut
+spec.loader.exec_module(nice_cut)
+
+nice_cut.start()
