@@ -2,3 +2,6 @@ __pycache__/
 
 .idea/
 .vscode/
+dist
+.history
+NiceCut.egg-info/
