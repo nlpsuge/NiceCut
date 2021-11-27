@@ -23,15 +23,14 @@ setup(
     author='nlpsuge',
 
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: End Users/Desktop',
         'License :: OSI Approved :: GNU Lesser General Public License v3 or later (LGPLv3+)',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
         'Topic :: Desktop Environment',
         "Topic :: Utilities",
         "Topic :: Multimedia :: Video :: Conversion",
@@ -41,7 +40,7 @@ setup(
     python_requires='>=3',
 
     install_requires=[
-        'alive_progress>=1.6.1',
+        'alive_progress>=2.0.0',
     ],
 
     entry_points={  # Optional

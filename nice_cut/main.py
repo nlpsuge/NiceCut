@@ -35,7 +35,7 @@ def main():
                            title='Processing subtitle files',
                            enrich_print=False,
                            bar='classic',
-                           theme='ascii') as bar:
+                           theme='classic') as bar:
                 for info in all_new_infos:
                     srt.extract_subtitle_sentences(info)
                     bar()
@@ -45,7 +45,7 @@ def main():
                            title='Processing media files',
                            enrich_print=False,
                            bar='classic',
-                           theme='ascii') as bar:
+                           theme='classic') as bar:
                 for info in all_new_infos:
                     milliseconds_before_cutting = args.milliseconds_before_cutting
                     milliseconds_after_cutting = args.milliseconds_after_cutting
