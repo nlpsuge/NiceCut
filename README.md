@@ -1,5 +1,5 @@
 # What does this project do?
-A tool that manages to cut a media file into small sections according to a subtitle.
+A tool that manages to cut a media file into small clips according to a subtitle. You **must** punctuate the subtitle by yourself beforehand, it's not easy to do it automatically.
 
 # Supported subtitle format
 .srt
